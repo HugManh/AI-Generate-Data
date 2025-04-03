@@ -3,11 +3,39 @@ import random
 import time
 import subprocess
 import os
+from langdetect import detect
+from deep_translator import GoogleTranslator
+import networkx as nx
+import matplotlib.pyplot as plt
+import plotly.graph_objects as go
+
+
+def translate_auto(text):
+    lang = detect(text)
+    text = GoogleTranslator(source="auto", target="vi").translate(text)
+    return f"[{lang}] {text}"
+
+
+def list_output_folders(root_dir):
+    output_dir = os.path.join(root_dir, "output")
+    print(f"++++++ output_dir {output_dir}")
+    folders = [f for f in os.listdir(
+        output_dir) if os.path.isdir(os.path.join(output_dir, f))]
+    return sorted(folders, reverse=True)
+
 
 st.title("Dino Chatbot")
+selected_folder = st.selectbox(
+    "Select Index Folder to Chat With",
+    list_output_folders("./indexing"),
+)
+query_type = st.selectbox(
+    "Query Type",
+    ['global', 'local'],
+)
 
 
-def construct_cli_args(query, selected_folder="20250401-163203", query_type="global"):
+def construct_cli_args(query, selected_folder, query_type):
     artifacts_folder = os.path.join(
         "./indexing/output", selected_folder, "artifacts")
     if not os.path.exists(artifacts_folder):
@@ -44,7 +72,7 @@ def run_graphrag_query(cli_args):
 
 
 def send_message(query):
-    cli_args = construct_cli_args(query)
+    cli_args = construct_cli_args(query, selected_folder, query_type)
     result = run_graphrag_query(cli_args)
     return result
 
@@ -81,11 +109,12 @@ if prompt := st.chat_input("Say something"):
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
 
-    response = send_message(prompt)
+    anwser = send_message(prompt)
     # response = response_generator()
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
-        response = st.write(response)
+        # response = st.write(translate_auto(anwser))
+        response = st.write(anwser)
     # Add assistant response to chat history
     st.session_state.messages.append(
-        {"role": "assistant", "content": response})
+        {"role": "assistant", "content": anwser})
