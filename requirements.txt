@@ -1,5 +1,7 @@
-gradio
-polars
-pyarrow
-tqdm
-unstructured
+# gradio
+# polars
+# pyarrow
+# tqdm
+# unstructured
+streamlit==1.42.0
+Authlib==1.3.2
