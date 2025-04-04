@@ -8,6 +8,17 @@ from deep_translator import GoogleTranslator
 import networkx as nx
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
+# import altair as alt
+
+#######################
+# Page configuration
+st.set_page_config(
+    page_title="US Population Dashboard",
+    page_icon="🏂",
+    layout="wide",
+    initial_sidebar_state="expanded")
+
+# alt.themes.enable("quartz")
 
 
 def translate_auto(text):
@@ -22,17 +33,6 @@ def list_output_folders(root_dir):
     folders = [f for f in os.listdir(
         output_dir) if os.path.isdir(os.path.join(output_dir, f))]
     return sorted(folders, reverse=True)
-
-
-st.title("Dino Chatbot")
-selected_folder = st.selectbox(
-    "Select Index Folder to Chat With",
-    list_output_folders("./indexing"),
-)
-query_type = st.selectbox(
-    "Query Type",
-    ['global', 'local'],
-)
 
 
 def construct_cli_args(query, selected_folder, query_type):
@@ -92,29 +92,50 @@ def response_generator():
         time.sleep(0.05)
 
 
-# Initialize chat history
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+st.title("Dino Chatbot")
+chatbot, options = st.columns([3, 1])
 
-# Display chat messages from history on app rerun
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
 
-# React to user input
-if prompt := st.chat_input("Say something"):
-    # Display user message in chat message container
-    with st.chat_message("user"):
-        st.markdown(prompt)
-    # Add user message to chat history
-    st.session_state.messages.append({"role": "user", "content": prompt})
+with options.container(height=600):
+    selected_folder = st.selectbox(
+        "Select Index Folder to Chat With",
+        list_output_folders("./indexing"),
+    )
+    query_type = st.radio(
+        "Query Type",
+        ["global", "local"],
+        horizontal=True,
+    )
 
-    anwser = send_message(prompt)
-    # response = response_generator()
-    # Display assistant response in chat message container
-    with st.chat_message("assistant"):
+with chatbot:
+    # Initialize chat history
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
+
+    # Container for chat history
+    chat_container = st.container(height=500)
+    with chat_container:
+        # Display chat messages from history on app rerun
+        for message in st.session_state.messages:
+            with st.chat_message(message["role"]):
+                st.markdown(message["content"])
+
+    # React to user input
+    if prompt := st.chat_input("Say something"):
+        # Display user message in chat message container
+        user = chat_container.chat_message("user")
+        user.write(prompt)
+        # Add user message to chat history
+        st.session_state.messages.append({"role": "user", "content": prompt})
+
+        assistant = chat_container.chat_message("assistant")
+        with assistant:
+            with st.spinner("Wait for it...", show_time=True):
+                anwser = send_message(prompt)
+                assistant.write(anwser)
+        # response = response_generator()
+        # Display assistant response in chat message container
         # response = st.write(translate_auto(anwser))
-        response = st.write(anwser)
-    # Add assistant response to chat history
-    st.session_state.messages.append(
-        {"role": "assistant", "content": anwser})
+        # Add assistant response to chat history
+        st.session_state.messages.append(
+            {"role": "assistant", "content": anwser})
