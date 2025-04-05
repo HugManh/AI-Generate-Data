@@ -1,0 +1,85 @@
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d5" for="edge" attr.name="source_id" attr.type="string" />
+  <key id="d4" for="edge" attr.name="description" attr.type="string" />
+  <key id="d3" for="edge" attr.name="weight" attr.type="double" />
+  <key id="d2" for="node" attr.name="source_id" attr.type="string" />
+  <key id="d1" for="node" attr.name="description" attr.type="string" />
+  <key id="d0" for="node" attr.name="type" attr.type="string" />
+  <graph edgedefault="undirected">
+    <node id="&quot;CIRCLE&quot;">
+      <data key="d0">"ORGANIZATION"</data>
+      <data key="d1">"Circle is a mathematical concept defined as a collection of points equidistant from a fixed point (the center)."</data>
+      <data key="d2">4b2c18116df3ff3ce643a73870ca6bc7</data>
+    </node>
+    <node id="&quot;STUDENT&quot;">
+      <data key="d0">"PERSON"</data>
+      <data key="d1">"Students are the intended audience for this summary, who can learn about the Circle concept in Grade 6 mathematics."</data>
+      <data key="d2">4b2c18116df3ff3ce643a73870ca6bc7</data>
+    </node>
+    <node id="&quot;GRADE 6 MATHEMATICS&quot;">
+      <data key="d0">"EVENT"</data>
+      <data key="d1">"Grade 6 Mathematics is the educational context where students learn about Circles and other mathematical concepts."</data>
+      <data key="d2">4b2c18116df3ff3ce643a73870ca6bc7</data>
+    </node>
+    <node id="&quot;FIXED POINT&quot;">
+      <data key="d0">"POINT"</data>
+      <data key="d1">"A fixed point in a Circle is the center around which all other points lie."</data>
+      <data key="d2">4b2c18116df3ff3ce643a73870ca6bc7</data>
+    </node>
+    <node id="&quot;COLLECTION&quot;">
+      <data key="d0">"SET"</data>
+      <data key="d1">"A Circle is defined as a collection of points equidistant from its center."</data>
+      <data key="d2">4b2c18116df3ff3ce643a73870ca6bc7</data>
+    </node>
+    <node id="&quot;EQUIDISTANT&quot;">
+      <data key="d0">"ADJECTIVE"</data>
+      <data key="d1">"Points in a Circle are equidistant from the center."</data>
+      <data key="d2">4b2c18116df3ff3ce643a73870ca6bc7</data>
+    </node>
+    <node id="&quot;INTENDED AUDIENCE&quot;">
+      <data key="d0">"NOUN PHRASE"</data>
+      <data key="d1">"Students are the intended audience for learning about Circles in Grade 6 Mathematics."</data>
+      <data key="d2">4b2c18116df3ff3ce643a73870ca6bc7</data>
+    </node>
+    <node id="&quot;ACADEMIC DISCIPLINE&quot;">
+      <data key="d0">"MATHEMATICS"</data>
+      <data key="d1">"Circle is a fundamental mathematical concept within the broader context of Mathematics."</data>
+      <data key="d2">4b2c18116df3ff3ce643a73870ca6bc7</data>
+    </node>
+    <node id="&quot;MATHEMATICS&quot;">
+      <data key="d0" />
+      <data key="d1" />
+      <data key="d2">4b2c18116df3ff3ce643a73870ca6bc7</data>
+    </node>
+    <node id="&quot;EDUCATIONAL SETTING&quot;">
+      <data key="d0">"CONTEXT"</data>
+      <data key="d1">"Grade 6 Mathematics is an educational setting where students learn about Circles and other mathematical concepts."</data>
+      <data key="d2">4b2c18116df3ff3ce643a73870ca6bc7</data>
+    </node>
+    <edge source="&quot;CIRCLE&quot;" target="&quot;STUDENT&quot;">
+      <data key="d3">1.0</data>
+      <data key="d4">"The Circle concept is being taught to Students in Grade 6 Mathematics."</data>
+      <data key="d5">4b2c18116df3ff3ce643a73870ca6bc7</data>
+    </edge>
+    <edge source="&quot;CIRCLE&quot;" target="&quot;GRADE 6 MATHEMATICS&quot;">
+      <data key="d3">1.0</data>
+      <data key="d4">"Circle is a fundamental mathematical concept within the broader context of Grade 6 Mathematics."</data>
+      <data key="d5">4b2c18116df3ff3ce643a73870ca6bc7</data>
+    </edge>
+    <edge source="&quot;CIRCLE&quot;" target="&quot;MATHEMATICS&quot;">
+      <data key="d3">1.0</data>
+      <data key="d4">"The Circle concept is a fundamental part of Mathematics."</data>
+      <data key="d5">4b2c18116df3ff3ce643a73870ca6bc7</data>
+    </edge>
+    <edge source="&quot;CIRCLE&quot;" target="&quot;EDUCATIONAL SETTING&quot;">
+      <data key="d3">1.0</data>
+      <data key="d4">"The Circle concept is being taught in the educational setting of Grade 6 Mathematics."</data>
+      <data key="d5">4b2c18116df3ff3ce643a73870ca6bc7</data>
+    </edge>
+    <edge source="&quot;STUDENT&quot;" target="&quot;MATHEMATICS&quot;">
+      <data key="d3">1.0</data>
+      <data key="d4">"Students learn Mathematics, including the Circle concept, in an educational setting."</data>
+      <data key="d5">4b2c18116df3ff3ce643a73870ca6bc7</data>
+    </edge>
+  </graph>
+</graphml>
